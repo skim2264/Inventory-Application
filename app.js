@@ -12,8 +12,7 @@ var app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const dev_db_url = "mongodb+srv://admin:admin-123@cluster0.ui9w0nd.mongodb.net/?retryWrites=true&w=majority";
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+const mongoDB = process.env.MONGODB_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
