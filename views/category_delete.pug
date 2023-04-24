@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+  h1 #{title}:  #{category.name}
+  
+  if products.length 
+    p Delete the following products before you can delete this category: 
+    ul 
+      each product in products 
+        li 
+          a(href=product.url) #{product.name}
+
+  else 
+    p Do you really want to delete this category?
+
+    form(method='POST' action='')
+      div.form-group
+        input#categoryid(type='hidden', name='categoryid', required='true', value=category._id)
+
+      button.btn(type='submit') Delete

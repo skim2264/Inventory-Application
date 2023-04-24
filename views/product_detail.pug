@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+  h1=product.name 
+  p #[strong Category: ]
+    a(href=product.category.url) #{product.category.name}
+  img(src=product.image class='product-img')
+  p #{product.description}
+  p #[strong Price:] #{product.price}
+  p #[strong Amount in Stock:] #{product.stockAmount}
+
+  hr
+  p
+    a(href=product.url+'/delete') Delete Product
+  p
+    a(href=product.url+'/update') Update Product

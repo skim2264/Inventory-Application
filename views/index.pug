@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Welcome to the #{title}
+
+  h2 Inventory Categories:
+  ul
+      each category in category_list 
+        li 
+          a(href=category.url) #{category.name}
+
+  p Total number of Categories: #{category_count}
+  p Total number of Products: #{product_count}

@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+  h1=title 
+
+  ul(class="product-ul")
+    each product in product_list 
+      li(class="product-li")
+        a(href=product.url class='product-name') #{product.name}    
+        p Category: #{product.category.name}
+        p Price: #{product.price} bells
+    
+    else
+      li There are no products.

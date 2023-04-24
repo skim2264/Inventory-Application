@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+  h1=title 
+
+  p Do you really want to delete this category?
+
+    form(method='POST' action='')
+      div.form-group
+        input#productid(type='hidden', name='productid', required='true', value=product._id)
+
+      button.btn(type='submit') Delete

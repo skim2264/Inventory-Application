@@ -1,0 +1,36 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(method='POST' action='')
+    div.form-group
+      label(for="name") Name: 
+      input#name(type='text' placeholder='Product Name' name='name' required='true' value=(product===undefined ? '' : product.name))
+    div.form-group
+      label(for="category") Category: 
+      select#category(type='select' placeholder='Select Category' name='category' required='true')
+        - categories.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for category in categories
+          if product
+            option(value=category._id selected=(category._id.toString()===product.category._id.toString() ? 'selected' : false) ) #{category.name}
+          else
+            option(value=category._id) #{category.name}
+    div.form-group  
+      label(for="description") Description: 
+      input#description(type='text' placeholder='Product Description' name='description' value=(product===undefined ? '' : product.description))
+    div.form-group  
+      label(for="price") Price: 
+      input#price(type='number' placeholder='Product price' name='price' value=(product===undefined ? '' : product.price))
+    div.form-group  
+      label(for="image") Image URL: 
+      input#image(type='text' placeholder='Product Image URL' name='image' value=(product===undefined ? '' : product.image))
+    div.form-group  
+      label(for="stockAmount") Stock Amount: 
+      input#stockAmount(type='text' placeholder='Product Stock Amount' name='stockAmount' required='true' value=(product===undefined ? '' : product.stockAmount))
+    button.btn(type='submit') Submit 
+
+  if errors 
+    ul 
+      for error in errors 
+        li!=error.msg
